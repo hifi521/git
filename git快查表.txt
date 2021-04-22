@@ -1,0 +1,64 @@
+配置变量：git config --global
+初始化带工作区仓库：git init
+初始化不带工作区仓库：git init --bare
+
+查看仓库状态：git status
+查看仓库状态（简写）：git status -s
+	untracked	未跟踪
+	tracked		已跟踪
+		unmodified	未跟踪
+		modified		已修改
+		staged		已暂存
+加入暂存区：git add 文件/.
+从暂存区中取消暂存某文件：git reset 文件
+提交暂存区中的文件到本地仓库：git commit -m "日志" <文件>
+删除暂存区中的文件：git rm 文件
+回退暂存区中的误删除：git checkout head <文件>
+
+查看远程仓库，列出每个远程服务器的简写：git remote
+查看远程仓库，列出每个远程服务器的详细：git remote -v
+查看远程仓库，列出地址：git remote -v
+将本地仓库添加远程仓库的链接：git remote add <shortname> <url>
+将本地仓库删除远程仓库的链接：git remote rm <shortname>
+
+克隆代码：git clone 地址
+抓取代码到.git目录：git fetch <shortname> <branch-name>
+	git init
+	git remote
+	git fetch
+	git merge	 远端的代码仓分支
+拉取代码：git pull <shortname> <branch-name>
+	== 将上面的fetch的代码合并在一起执行fetch+merge
+	强行拉取合并（远端代码和本地代码共存于工作区）：--allow-unrelated-histortes
+推送代码到远端：git push <remote-name> <branch-name>
+
+查看本地分支：git branch
+查看远端分支：git branch -r
+查看所有分支：git branch -a
+创建分支：git branch <branch-name>
+切换分支：git checkout <branch-name>
+删除分支：git branch -d <branch-name>
+强制删除：git branch -D <branch-name>
+提交本地分支到远端：git push <shortname> <branch-name>
+合并分支：git merge <branch-name>
+冲突解决：修改冲突文件
+	git add .
+	git commit 
+删除远端仓库：git push origin -d <branch-name>
+
+查看tag：git tag
+添加标签：git tag [tag-name]
+查看标签详细内容：git show [tag-name]
+推送标签到远端：git push [shortname] [tag-name]
+从tag上拉一个分支出来：git checkout -b [branch] [tag-name]
+删除本地tag：git tag -d [tag-name]
+删除远端tag：git push origin:refs/tags/[tag-name]
+
+
+
+git diff : 对比工作区（未git add）和暂存区（git add之后）
+git diff --cached : 对比暂存区（git add 之后）和本地仓（git commit之后）
+git diff HEAD : 对比工作区（未git add）和版本库（git commit 之后）
+
+git log -p : 查看全部提交历史并展示每次修改的内容
+git log --stat : 列出修改的文件以及每个文件中修改了多少行
